@@ -335,8 +335,9 @@ class NeuGas:
             for rank,particle_index in enumerate(sorted_particles_indices[0:updated_particles_number]):
                 #print(rank,particle_index,particles_distances[particle_index])
                 #   calculating DELTA
-                delta_coeff=lr0*((iterations-i)/iterations)*\
-                    np.exp(-(2*rank)/(neigh0*((iterations-i)/iterations)**2))
+                #delta_coeff=lr0*((iterations-i)/iterations)*np.exp(-(2*rank)/(neigh0*((iterations-i)/iterations)**2))
+                delta_coeff=lr0*((iterations-i)/iterations)*np.exp(-(2*rank)/(neigh0*((iterations-i)/iterations))**2)
+                
                 #   updating
                 if delta_coeff>delta_coeff_min_update:
                     self.particles[particle_index]+=delta_coeff*(picked_point-self.particles[particle_index])
